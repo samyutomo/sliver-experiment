@@ -35,11 +35,12 @@ class WeeklyForecastList extends StatelessWidget {
     TextTheme textTheme = Theme
         .of(context)
         .textTheme;
-    List<DailyForecast> forecasts = Server.getDailyForecastList();
+    // List<DailyForecast> forecasts = Server.getDailyForecastList();
 
-    return SingleChildScrollView(
-      child: Column(
-        children: forecasts.map((dailyForecast) {
+    return ListView.builder(
+      itemCount: 7,
+      itemBuilder: (BuildContext context, int index) {
+      final DailyForecast dailyForecast = Server.getDailyForecastByID(index);
           return Card(
             child: ListTile(
               leading: Text(
@@ -57,11 +58,8 @@ class WeeklyForecastList extends StatelessWidget {
               ),
             ),
           );
-        }).toList(),
-      ),
-    );
+        });
   }
-
 }
 
 const String baseAssetURL = 'https://dartpad-workshops-io2021.web.app/getting_started_with_slivers/';
