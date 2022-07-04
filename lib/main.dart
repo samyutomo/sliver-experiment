@@ -18,12 +18,30 @@ class SliverApp extends StatelessWidget {
         body: CustomScrollView(
             slivers: [
               SliverAppBar(
-                title: const Text("Horizons"),
                 backgroundColor: Colors.teal[800],
-                floating: true,
-                snap: true,
-                expandedHeight: 100.0,
-                // pinned: true,
+                expandedHeight: 200.0,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: const Text("Horizons"),
+                  collapseMode: CollapseMode.pin,
+                  background: DecoratedBox(
+                    position: DecorationPosition.foreground,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.center,
+                            colors: <Color>[
+                              Colors.teal[800]!,
+                              Colors.transparent
+                            ]
+                        )
+                    ),
+                    child: Image.network(
+                      headerImage,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                ),
               ),
               const WeeklyForecastList()
             ]
