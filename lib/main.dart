@@ -15,13 +15,17 @@ class SliverApp extends StatelessWidget {
       scrollBehavior: const ConstantScrollBehavior(),
       title: "Horizon Weather",
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Horizons"),
-          backgroundColor: Colors.teal[800],
-        ),
-        body: const CustomScrollView(
+        body: CustomScrollView(
             slivers: [
-              WeeklyForecastList()
+              SliverAppBar(
+                title: const Text("Horizons"),
+                backgroundColor: Colors.teal[800],
+                floating: true,
+                snap: true,
+                expandedHeight: 100.0,
+                // pinned: true,
+              ),
+              const WeeklyForecastList()
             ]
         ),
       ),
