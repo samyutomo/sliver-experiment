@@ -21,7 +21,16 @@ class SliverApp extends StatelessWidget {
                 backgroundColor: Colors.teal[800],
                 expandedHeight: 200.0,
                 pinned: true,
+                stretch: true,
+                onStretchTrigger: () async{
+                  print("Load new data");
+                },
                 flexibleSpace: FlexibleSpaceBar(
+                    stretchModes: const [
+                      StretchMode.zoomBackground,
+                      StretchMode.fadeTitle,
+                      StretchMode.blurBackground
+                    ],
                   title: const Text("Horizons"),
                   collapseMode: CollapseMode.pin,
                   background: DecoratedBox(
